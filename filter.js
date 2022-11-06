@@ -19,7 +19,7 @@ function applyFilterTo(filter, auto) {
             temp_cell[row*auto.cols +col] =  new_value;
         }
     }
-    //auto.cell = temp_cell;
+    auto.cell = temp_cell;
     //auto.cell = new Array(auto.rows*auto.cols).fill(0);
 
 }
@@ -30,10 +30,19 @@ function valueAt(auto,row,col) {
     for (let row_mod = -1; row_mod <= 1; row_mod++) {
         for (let col_mod = -1; col_mod <= 1; col_mod++) {
             this_row = row + row_mod; this_col = col + col_mod;
-            raw_value = auto.get(fixedIndex(row,auto.rows), fixedIndex(col, auto.cols));
+            raw_value = auto.get(fixedIndex(this_row,auto.rows), fixedIndex(this_col, auto.cols));
             running_total += (auto.colors**exponent) * raw_value;
             exponent -= 1;
         }
     }
     return running_total;
 }
+
+function random_local_update(filter, auto) {
+    row = Math.floor(Math.random() * auto.rows);
+    col = Math.floor(Math.random() * auto.cols);
+    let filter_index = valueAt(auto,row,col);
+    let new_value = filter.cell[filter_index];
+    auto.set(row,col,new_value);
+}
+
