@@ -32,15 +32,16 @@ function fixedIndex(x , modulus) {
 function plotAutomata(auto) {
     for (let row = 0 ; row < global_rows ; row++) {
         for (let col = 0 ; col < global_cols ; col++) {
-            switch(auto.get(row,col)) {
-                //case 0 : pen.fillStyle = "#000000";break;
-                case 0 : pen.fillStyle = "#FFFFFF";break;
-                case 1 : pen.fillStyle = "#EEEEEE";break;
-                case 2 : pen.fillStyle = "#FFFFFF";break;
-                //case 2 : pen.fillStyle = "#FF0000";break;
-                case 3 : pen.fillStyle = "#EEEEEE";break;
-                case 4 : pen.fillStyle = "#660000";break;
-            }
+            // switch(auto.get(row,col)) {
+            //     //case 0 : pen.fillStyle = "#000000";break;
+            //     case 0 : pen.fillStyle = "#FFFFFF";break;
+            //     case 1 : pen.fillStyle = "#EEEEEE";break;
+            //     case 2 : pen.fillStyle = "#FFFFFF";break;
+            //     //case 2 : pen.fillStyle = "#FF0000";break;
+            //     case 3 : pen.fillStyle = "#EEEEEE";break;
+            //     case 4 : pen.fillStyle = "#660000";break;
+            // }
+            pen.fillStyle = color[auto.get(row,col)];
             pen.beginPath();
             pen.rect(row*auto.pixel_width, col*auto.pixel_height, auto.pixel_width, auto.pixel_height);
             pen.fill();   
