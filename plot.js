@@ -1,21 +1,16 @@
-function newAutomata(rows, cols, colors) {
+function newAutomata() {
     return {
-        rows : rows,
-        cols : cols,
-        colors : colors,
-        pixel_height : canvas.width/cols,
-        pixel_width  : canvas.width/rows,
-        cell : new Array(rows*cols).fill(0),
+        cell : new Array(global_rows*global_cols).fill(0),
         get : function(row,col) {
-            if (row >= 0 && row < this.rows && col >=0 && col < this.cols) {
-                return this.cell[row*this.cols + col];
+            if (row >= 0 && row < global_rows && col >=0 && col < global_cols) {
+                return this.cell[row*global_cols + col];
             } else {
                 return undefined;
             }
         },
         set : function( row, col, value) {
-            if (row >= 0 && row < this.rows && col >=0 && col < this.cols) {
-                this.cell[row*this.cols + col] = value;
+            if (row >= 0 && row < global_rows && col >=0 && col < global_cols) {
+                this.cell[row*global_cols + col] = value;
             }
         },
     };
@@ -43,15 +38,15 @@ function plotAutomata(auto) {
             // }
             pen.fillStyle = color[auto.get(row,col)];
             pen.beginPath();
-            pen.rect(row*auto.pixel_width, col*auto.pixel_height, auto.pixel_width, auto.pixel_height);
+            pen.rect(col*pixel_width, row*pixel_height, pixel_width, pixel_height);
             pen.fill();   
         }
     }
 }
-function seedAutomata(auto,choices) {
+function seedAutomata(auto) {
     for (let row = 0 ; row < global_rows ; row++) {
         for (let col = 0 ; col < global_cols ; col++) {
-            auto.set(row,col,Math.floor(Math.random() * choices));
+            auto.set(row,col,Math.floor(Math.random() * global_colors));
         }
     }
 }

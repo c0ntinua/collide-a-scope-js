@@ -133,6 +133,6 @@ function next_round() {
     process.stdout.write('\n'); 
     textPlot(auto);
 }
-
+delay = 100;
 setInterval(next_round,delay);
 console.log(filter);

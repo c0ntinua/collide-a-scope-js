@@ -1,4 +1,6 @@
 setColors();
+setRows();
+setCols();
 seedAutomata(auto,global_colors);
 seedFilter(filter,global_colors);
 plotAutomata(auto);

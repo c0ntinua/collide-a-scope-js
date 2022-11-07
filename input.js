@@ -5,6 +5,19 @@ function getNumColors() {
 function getColor(n) {
     color[n] = document.getElementById(`color_${n}`).value;
 }
+function getRows() {
+    //global_rows = document.getElementById("rows").value;
+    //reset();
+    //console.log( document.getElementById(`rows`).value);
+    //pixel_width   = canvas.width/global_rows;
+    bigReset();
+}
+function setRows() {
+    document.getElementById("rows").value = global_rows;
+}
+function setCols() {
+    document.getElementById("cols").value = global_cols;
+}
 function setColor(n) {
     document.getElementById(`color_${n}`).value = color[n];
 }
@@ -15,9 +28,12 @@ function setColors() {
 }
 
 function reset() {
-    filter = newFilter(global_colors);
+    filter = newFilter();
     let temp_cell = new Array(global_rows * global_cols).fill(0);
     seedFilter(filter);
-    seedAutomata(auto,global_colors);
+    seedAutomata(auto);
 
+}
+function bigReset() {
+    auto = newAutomata();
 }

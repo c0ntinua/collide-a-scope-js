@@ -1,13 +1,12 @@
-function newFilter(colors) {
+function newFilter() {
     return {
-        colors : colors,
-        length : colors ** 9,
-        cell : new Array(colors ** 9).fill(0),
+        length : global_colors ** 9,
+        cell : new Array(global_colors ** 9).fill(0),
     }
 }
 function seedFilter(filter) {
     for (c = 0 ; c < filter.length; c++) {
-        filter.cell[c] = Math.floor(Math.random() * filter.colors);
+        filter.cell[c] = Math.floor(Math.random() * global_colors);
     }
 }
 
@@ -30,8 +29,8 @@ function valueAt(auto,row,col) {
     for (let row_mod = -1; row_mod <= 1; row_mod++) {
         for (let col_mod = -1; col_mod <= 1; col_mod++) {
             this_row = row + row_mod; this_col = col + col_mod;
-            raw_value = auto.get(fixedIndex(this_row,auto.rows), fixedIndex(this_col, auto.cols));
-            running_total += (auto.colors**exponent) * raw_value;
+            raw_value = auto.get(fixedIndex(this_row,global_rows), fixedIndex(this_col, global_cols));
+            running_total += (global_colors**exponent) * raw_value;
             exponent -= 1;
         }
     }
@@ -39,8 +38,8 @@ function valueAt(auto,row,col) {
 }
 
 function random_local_update(filter, auto) {
-    row = Math.floor(Math.random() * auto.rows);
-    col = Math.floor(Math.random() * auto.cols);
+    row = Math.floor(Math.random() * global_rows);
+    col = Math.floor(Math.random() * global_cols);
     let filter_index = valueAt(auto,row,col);
     let new_value = filter.cell[filter_index];
     auto.set(row,col,new_value);
