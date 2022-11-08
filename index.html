@@ -3,17 +3,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@1&display=swap');
+        </style> 
+        <link rel="stylesheet" type="text/css" href="collide.css" />     
     </head>
     <canvas id="canvas" onclick = "create_new_filter()" width=1000 height=1000></canvas>
     <br>
     <label for="colors">colors_:</label>
     <input type="text" id="colors" name="colors" value="3">
     <button type="button" onclick="getNumColors();">RETURN</button>
-    <br>
     <label for="colors">color_0:</label>
     <input type="text" id="color_0" name="color_0" value=""#FFFFFF"">
     <button type="button" onclick="getColor(0);">RETURN</button>
-    <br>
     <label for="colors">color_1:</label>
     <input type="text" id="color_1" name="color_1" value=""#FFFFFF"">
     <button type="button" onclick="getColor(1);">RETURN</button>
@@ -21,25 +23,28 @@
     <label for="colors">color_2:</label>
     <input type="text" id="color_2" name="color_2" value=""#FFFFFF"">
     <button type="button" onclick="getColor(2);">RETURN</button>
-    <br>
     <label for="colors">color_3:</label>
     <input type="text" id="color_3" name="color_3" value=""#FFFFFF"">
     <button type="button" onclick="getColor(3);">RETURN</button>
-    <br>
     <label for="colors">color_4:</label>
     <input type="text" id="color_4" name="color_4" value=""#FFFFFF"">
     <button type="button" onclick="getColor(4);">RETURN</button>
     <br>
-    <label for="rows">rows__:</label>
-    <input type="text" id="rows" name="rows" >
+    <label for="rows">numrows:</label>
+    <input type="text" id="rows" name="rows" onclick="getRows();" >
     <button type="button" onclick="getRows();">RETURN</button>
-    <br>
-    <label for="rows">cols__:</label>
+    <label for="rows">numcols:</label>
     <input type="text" id="cols" name="cols">
-    <button type="button" onclick="getRows();">RETURN</button>
+    <button type="button" onclick="getCols();">RETURN</button>
+    <label for="delay">delayms:</label>
+    <input type="text" id="delay" name="delay">
+    <button type="button" onclick="getDelay();">RETURN</button>
     <br>
+    <label for="delay">updates:</label>
+    <input type="text" id="updates" name="updates">
+    <button type="button" onclick="getUpdates();">RETURN</button>
 
-</select>
+
     <script src="filter.js"></script>
     <script src="plot.js"></script>
     <script src="input.js"></script>

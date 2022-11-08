@@ -1,8 +1,11 @@
 setColors();
+setNumColors();
 setRows();
 setCols();
+setDelay();
+setUpdates();
 seedAutomata(auto,global_colors);
 seedFilter(filter,global_colors);
 plotAutomata(auto);
 //setInterval(apply_current_filter,delay);
-setInterval(perform_tiny_update,delay);
+let interval = setInterval(perform_tiny_update,delay);
