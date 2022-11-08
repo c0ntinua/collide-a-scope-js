@@ -8,6 +8,12 @@ function setNumColors() {
 function getColor(n) {
     color[n] = document.getElementById(`color_${n}`).value;
 }
+function getColors() {
+    for (let i = 0; i < output_colors; i++) {
+        getColor(i);
+    }
+
+}
 
 function setCols() {
     document.getElementById("cols").value = global_cols;
@@ -51,6 +57,23 @@ function setUpdates() {
     document.getElementById("updates").value = tiny_updates;
 }
 
+function getChoices(){
+    getColors();
+    getNumColors();
+    getRows();
+    getCols();
+    getDelay();
+    getUpdates();
+}
+
+function setChoices(){
+    setColors();
+    setNumColors();
+    setRows();
+    setCols();
+    setDelay();
+    setUpdates();
+}
 
 function reset() {
     filter = newFilter();
