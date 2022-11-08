@@ -9,6 +9,7 @@ let output_colors = 5;
 let color = ["#000000","#FFFFFF","#FF0000","#00FF00","#0000FF","#777777"];
 let delay = 10;
 let tiny_updates = 100;
+let neigborhood = 9;
 let temp_cell = new Array(global_rows * global_cols).fill(0);
 let auto = newAutomata();
 let filter = newFilter();
