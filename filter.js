@@ -16,9 +16,11 @@ function applyFilterTo(filter, auto) {
         for (let col = 0 ; col < auto.cols ; col++) {
             //let filter_index = valueAt(auto,row,col);
             //let filter_index = valueAt_(auto,row,col);(auto,row,col);
-            if (Math.random() < 0.5) filter_index = valueAtElementaryRow(auto,row,col);
-            else filter_index = valueAtElementaryCol(auto,row,col);
+            // if (Math.random() < 0.5) filter_index = valueAtElementaryRow(auto,row,col);
+            // else filter_index = valueAtElementaryCol(auto,row,col);
             //filter_index = valueAtElementary(auto,row,col);
+            if (Math.random() < 0.5) filter_index = rowValue(auto,row,col);
+            else filter_index = colValue(auto,row,col);
             let new_value = filter.cell[filter_index];
             temp_cell[row*auto.cols +col] =  new_value;
         }
@@ -59,6 +61,31 @@ function valueAtElementaryCol(auto,row,col) {
     this_col = col;
     for (let row_mod = -1; row_mod <= 1; row_mod++) {
             this_row = row + row_mod;
+            raw_value = auto.get(fixedIndex(this_row, global_rows), fixedIndex(this_col, global_cols));
+            running_total += (global_colors**exponent) * raw_value;
+            exponent -= 1;
+    }
+    return running_total;
+}
+function colValue(auto,row,col) {
+    let exponent = neighbors - 1;
+    let running_total = 0;
+    this_col = col;
+    for (let row_mod = 0; row_mod < neighbors; row_mod++) {
+            this_row = row + row_mod;
+            raw_value = auto.get(fixedIndex(this_row, global_rows), fixedIndex(this_col, global_cols));
+            running_total += (global_colors**exponent) * raw_value;
+            exponent -= 1;
+    }
+    return running_total;
+}
+
+function rowValue(auto,row,col) {
+    let exponent = neighbors - 1;
+    let running_total = 0;
+    this_row = row;
+    for (let col_mod = 0; col_mod < neighbors; col_mod++) {
+            this_col = row + col_mod;
             raw_value = auto.get(fixedIndex(this_row, global_rows), fixedIndex(this_col, global_cols));
             running_total += (global_colors**exponent) * raw_value;
             exponent -= 1;

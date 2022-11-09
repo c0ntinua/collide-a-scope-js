@@ -42,6 +42,13 @@ function getDelay() {
 function setDelay() {
     document.getElementById("delay").value = delay;
 }
+
+function getNeighbors() {
+    neighbors = parseInt(document.getElementById("neighbors").value);
+}
+function setNeighbors() {
+    document.getElementById("neighbors").value = neighbors;
+}
 function getCols() {
     global_cols = parseInt(document.getElementById("cols").value);
     pixel_width   = canvas.width/global_cols;
@@ -64,6 +71,7 @@ function getChoices(){
     getCols();
     getDelay();
     getUpdates();
+    getNeighbors();
 }
 
 function setChoices(){
@@ -73,6 +81,7 @@ function setChoices(){
     setCols();
     setDelay();
     setUpdates();
+    setNeighbors();
 }
 
 function reset() {
